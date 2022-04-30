@@ -1,0 +1,236 @@
+Heap Sort
+
+public class Main{
+    
+    public static void maxHeapify(int arr[], int n, int i){
+        int l=(2*i)+1;
+        int r=(2*i)+2;
+        int largest=i;
+        
+        if(l<n && arr[l]>arr[largest]){
+            largest=l;
+        }
+        
+        if(r<n && arr[r]>arr[largest]){
+            largest=r;
+        }
+        
+        if(largest!=i){
+            int temp=arr[i];
+            arr[i]=arr[largest];
+            arr[largest]=temp;
+            
+            maxHeapify(arr, n, largest);
+        }
+    }
+    
+    public static void buildHeap(int[] arr, int n){
+        int lastNode=(n/2)-1;
+        
+        for(int i=lastNode; i>=0; i--){
+            maxHeapify(arr, n, i);
+        }
+    }
+    
+    public static int deleteNode(int arr[], int n){
+        int lastElement=arr[n-1];
+        int maxElement=arr[0];
+        arr[0]=lastElement;
+        
+        n=n-1;
+        arr[n]=maxElement;
+        
+        maxHeapify(arr, n, 0);
+        return n;
+    }
+    
+
+    public static void main(String[] args){
+        int[] arr={1, 3, 5, 4, 6, 13, 10, 9, 8, 15, 17};
+        int n=arr.length;
+        
+        buildHeap(arr, n);
+        
+        System.out.println("Max Heap: ");
+        for(int i=0; i<n; i++){
+            System.out.print(arr[i]+" ");
+        }
+        
+        System.out.println();
+        while(n!=0){
+            n=deleteNode(arr, n);
+        }
+        
+        n=arr.length;
+        
+        System.out.println();
+        System.out.println("Heap Sort: ");
+        for(int i=0; i<n; i++){
+            System.out.print(arr[i]+" ");
+        }
+        
+        System.out.println();
+    }
+}
+
+Max Heap
+
+public class Main{
+    
+    public static void maxHeapify(int arr[], int n, int i){
+        int l=(2*i)+1;
+        int r=(2*i)+2;
+        int largest=i;
+        
+        if(l<n && arr[l]>arr[largest]){
+            largest=l;
+        }
+        
+        if(r<n && arr[r]>arr[largest]){
+            largest=r;
+        }
+        
+        if(largest!=i){
+            int temp=arr[i];
+            arr[i]=arr[largest];
+            arr[largest]=temp;
+            
+            maxHeapify(arr, n, largest);
+        }
+    }
+    
+    public static void buildHeap(int[] arr, int n){
+        int lastNode=(n/2)-1;
+        
+        for(int i=lastNode; i>=0; i--){
+            maxHeapify(arr, n, i);
+        }
+    }
+    
+    public static void main(String[] args){
+        int[] arr={1, 3, 5, 4, 6, 13, 10, 9, 8, 15, 17};
+        int n=arr.length;
+        
+        buildHeap(arr, n);
+        
+        System.out.println("Max Heap: ");
+        for(int i=0; i<n; i++){
+            System.out.print(arr[i]+" ");
+        }
+    }
+}
+
+Min Heap
+
+public class Main{
+    
+    public static void minHeapify(int arr[], int n, int i){
+        int l=(2*i)+1;
+        int r=(2*i)+2;
+        int largest=i;
+        
+        if(l<n && arr[l]<arr[largest]){
+            largest=l;
+        }
+        
+        if(r<n && arr[r]<arr[largest]){
+            largest=r;
+        }
+        
+        if(largest!=i){
+            int temp=arr[i];
+            arr[i]=arr[largest];
+            arr[largest]=temp;
+            
+            minHeapify(arr, n, largest);
+        }
+    }
+    
+    public static void buildHeap(int[] arr, int n){
+        int lastNode=(n/2)-1;
+        
+        for(int i=lastNode; i>=0; i--){
+            minHeapify(arr, n, i);
+        }
+    }
+    
+    public static void main(String[] args){
+        int[] arr={1, 3, 5, 4, 6, 13, 10, 9, 8, 15, 17};
+        int n=arr.length;
+        
+        buildHeap(arr, n);
+        
+        System.out.println("Min Heap: ");
+        for(int i=0; i<n; i++){
+            System.out.print(arr[i]+" ");
+        }
+    }
+}
+
+Heap Deletion
+
+public class Main{
+    
+    public static void maxHeapify(int arr[], int n, int i){
+        int l=(2*i)+1;
+        int r=(2*i)+2;
+        int largest=i;
+        
+        if(l<n && arr[l]>arr[largest]){
+            largest=l;
+        }
+        
+        if(r<n && arr[r]>arr[largest]){
+            largest=r;
+        }
+        
+        if(largest!=i){
+            int temp=arr[i];
+            arr[i]=arr[largest];
+            arr[largest]=temp;
+            
+            maxHeapify(arr, n, largest);
+        }
+    }
+    
+    public static void buildHeap(int[] arr, int n){
+        int lastNode=(n/2)-1;
+        
+        for(int i=lastNode; i>=0; i--){
+            maxHeapify(arr, n, i);
+        }
+    }
+    
+    public static int deleteNode(int arr[], int n){
+        int lastElement=arr[n-1];
+        arr[0]=lastElement;
+        
+        n=n-1;
+        
+        maxHeapify(arr, n, 0);
+        
+        return n;
+    }
+    
+    public static void main(String[] args){
+        int[] arr={1, 3, 5, 4, 6, 13, 10, 9, 8, 15, 17};
+        int n=arr.length;
+        
+        buildHeap(arr, n);
+        
+        System.out.println("Max Heap: ");
+        for(int i=0; i<n; i++){
+            System.out.print(arr[i]+" ");
+        }
+        
+        System.out.println();
+        
+        System.out.println("After Deletion of 2 elements: ");
+        n=deleteNode(arr, n);
+        n=deleteNode(arr, n);
+        
+        for(int i=0; i<n; i++){
+            System.out.print(arr[i]+" ");
+        }
+    }
+}
